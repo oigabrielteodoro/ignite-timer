@@ -9,7 +9,7 @@ import {
 } from './NewCycleForm.styles'
 
 export function NewCycleForm() {
-  const { activeCycle } = useCycles()
+  const { cycles, activeCycle } = useCycles()
   const { register } = useFormContext()
 
   return (
@@ -24,10 +24,9 @@ export function NewCycleForm() {
       />
 
       <datalist id="taskSuggestions">
-        <option value="Projeto 1" />
-        <option value="Projeto 2" />
-        <option value="Projeto 3" />
-        <option value="Banana" />
+        {cycles.map((cycle) => (
+          <option key={cycle.id} value={cycle.task} />
+        ))}
       </datalist>
 
       <label htmlFor="minutesAmount">durante</label>
