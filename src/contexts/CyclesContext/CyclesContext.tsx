@@ -39,7 +39,7 @@ export function CyclesProvider({ children }: CyclesProviderProps) {
       cycles: [],
       activeCycleId: null,
     },
-    () => {
+    (state) => {
       const storedStateAsJSON = localStorage.getItem(
         '@ignite-timer:cycles-state-1.0.0',
       )
@@ -47,6 +47,8 @@ export function CyclesProvider({ children }: CyclesProviderProps) {
       if (storedStateAsJSON) {
         return JSON.parse(storedStateAsJSON)
       }
+
+      return state
     },
   )
 
